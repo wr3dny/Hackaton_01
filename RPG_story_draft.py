@@ -12,7 +12,7 @@ from time import sleep
 sleep_value = 2
 
 user_name_lenght = int(input("Give Your hero name length (please use even number): "))
-user_alignment = input('Are You "good" or "bad": ')
+user_alignment = input('Are You "good" or "evil": ')
 
 vowel = ['a', 'e', 'i', 'o', 'u']
 consonant = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'n', 'q', 's', 't', 'v',
@@ -30,13 +30,13 @@ while i <= 200:
 def name_generator(name_lenght):
     generated_name = []
     if abs(name_lenght % 2 != 0):
-            print('You picked and odd number')
-            name_length = int(input('Pick up Your number again: '))
+        print('You picked and odd number')
+        name_length = int(input('Pick up Your number again: '))
     else:
-        i = 0
-        for i in range(0, int(name_lenght/2)):
+        j = 0
+        for j in range(0, int(name_lenght/2)):
             generated_name.append(random.choice(name_parts))
-            i += 1
+            j += 1
 
     name_out: str = ' '.join(generated_name)
     name_out = name_out.replace(' ', '')
@@ -44,17 +44,15 @@ def name_generator(name_lenght):
     return name_out
 
 def nickname_generator(alignment):
-    while True:
-        if alignment == 'good':
-            nickname_good = ['Handsome', 'Bold', 'Big', 'Swift', 'Pure', 'Fair']
-            nickname = random.choice(nickname_good)
-        elif alignment == 'bad':
-            nickname_bad = ['Decayed', 'Sinister', 'Oathbreaker', 'Unpleasant', 'Blackheart', 'Wicked']
-            nickname = random.choice(nickname_bad)
-        #     break
-        # else:
-        #     print('You picked up wrong')
-        return nickname
+    if alignment == 'good':
+        nickname_good = ['Handsome', 'Bold', 'Big', 'Swift', 'Pure', 'Fair', 'Peacebringer']
+        nickname = random.choice(nickname_good)
+    elif alignment == 'evil':
+        nickname_evil = ['Decayed', 'Sinister', 'Oathbreaker', 'Unpleasant', 'Blackheart', 'Wicked', 'Skullcrusher']
+        nickname = random.choice(nickname_evil)
+    else:
+        print('You picked up wrong - only good and evil are worthy of choice')
+    return nickname
 
 
 name_out = name_generator(user_name_lenght)
@@ -74,11 +72,11 @@ our_hero = name_out + ' the ' + nickname
 
 def story_rows(yes_no):
     possible_directions = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest']
-    who_random = ['pixie', 'banshee', 'werewolf', 'skeleton', 'zombie', 'dwarf', 'bestigor', 'goblin']
+    who_random = ['pixie', 'banshee', 'werewolf', 'skeleton', 'zombie', 'dwarf', 'bestigor', 'goblin', 'skaven']
     occupations_random = [' bodyguard', ' hangman', ' tax collector', ' miner', ' mime', ' innkeeper', ' gardener',
-                          ' servant', ' shaman']
+                          ' servant', ' shaman', ' archer', ' cook', ' ring bearer', ' troll slayer']
     possible_place = ['inn', 'old castle', 'deep dwarven mine', 'town square', 'shadowy forrest', 'wide road',
-                      'godforsaken village', 'seashore']
+                      'godforsaken village', 'seashore', 'abandoned graveyard', 'unicorn glade', ]
     actions_to_happen = ['attacked ', 'spited on ', 'brawled with ', 'whistle at ', 'argue with ', ]
 
     line_1 = f'So our story begins when {our_hero} stepped outside the tavern "Saturday\'s Hangover".'
@@ -92,10 +90,10 @@ def story_rows(yes_no):
     line_4 = f'{random.choice(possible_place).capitalize()} was opportunity for some coins, so {he_she} ' \
              f'{random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)},' \
              f' then {he_she} had to travel for {random.randrange(1, 8)} hours {random.choice(possible_directions)}'
-    line_5 = f'The travel took its tall, but the view of {random.choice(possible_place)} was magnificent, even with ' \
+    line_5 = f'The journey took its tall, but the view of {random.choice(possible_place)} was magnificent, even with ' \
              f'a pair of {random.choice(who_random) + random.choice(occupations_random)} standing in the way. '
     line_6 = f'Whole adventures day made {our_hero} tired, so {he_she} found a {random.choice(possible_place)} ' \
-             f'to rest before next day.'
+             f'to rest before next heroic day.'
     line_7 = 'The End'
     yes_no = yes_no.lower()
     if yes_no == 'yes':
@@ -119,3 +117,4 @@ def story_rows(yes_no):
 
 user_rows = input('Do You want to hear the tale (yes/no) : ')
 story_rows(user_rows)
+
