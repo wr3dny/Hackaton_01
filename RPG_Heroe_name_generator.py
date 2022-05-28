@@ -34,4 +34,3 @@ print(name_out)
 nickname_base = ['Handsome', 'Bold', 'Decayed', 'Lazy', 'Oathbreaker', 'Unpleasant', 'Big', 'Necromancer', 'Blackheart']
 nickname = random.choice(nickname_base)
 print(f'Your heroe is called {name_out} the {nickname}')
-
