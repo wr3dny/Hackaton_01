@@ -9,9 +9,10 @@
 
 import random
 from time import sleep
+sleep_value = 2
 
 user_name_lenght = int(input("Give Your heroe name lenght (please use even number): "))
-user_aligmnet = input('Are You "good" or "bad"')
+user_aligmnet = input('Are You "good" or "bad": ')
 
 vowel = ['a', 'e', 'i', 'o', 'u']
 consonant = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'n', 'q', 's', 't', 'v',
@@ -28,15 +29,15 @@ while i <= 105:
 
 def name_generator(name_lenght):
     generated_name = []
-    while True:
-        if abs(name_lenght % 2 != 0):
+    if abs(name_lenght % 2 != 0):
             print('You picked and odd number')
-        else:
-            i = 0
-            for i in range(0, int(name_lenght/2)):
-                generated_name.append(random.choice(name_parts))
-                i += 1
-            break
+            name_length = int(input('Pick up Your number again: '))
+    else:
+        i = 0
+        for i in range(0, int(name_lenght/2)):
+            generated_name.append(random.choice(name_parts))
+            i += 1
+
     name_out: str = ' '.join(generated_name)
     name_out = name_out.replace(' ', '')
     name_out = name_out.capitalize()
@@ -50,10 +51,10 @@ def nickname_generator(alignment):
         elif alignment == 'bad':
             nickname_bad = ['Decayed', 'Sinister', 'Oathbreaker', 'Unpleasant', 'Blackheart', 'Wicked']
             nickname = random.choice(nickname_bad)
-            break
-        else:
-            print('You picked up wrong')
-    return nickname
+        #     break
+        # else:
+        #     print('You picked up wrong')
+        return nickname
 
 
 name_out = name_generator(user_name_lenght)
@@ -64,96 +65,53 @@ if name_out[-1] == 'a':
 else:
     he_she = 'he'
 
+# def story(how_long):
+#     x = 0
+#     if x in range(0, how_long):
+
+
 print('Your heroe is created')
+sleep(sleep_value)
 print(f'{he_she.capitalize()} is called {name_out} the {nickname}')
+sleep(sleep_value)
+
+our_heroe = name_out + ' the ' + nickname
+
+print(f'So our story begins when {our_heroe} stepped outside the tavern "Saturday\'s Hangover".')
+
+possible_directions = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest']
+who_random = ['pixie', 'wolverine ', 'wherewolf', 'skeleton', 'zombie', 'dwarf', 'bestigor', 'goblin']
+occupations_random = [' bodyguard', ' hangman', ' tax collector', ' miner', ' mime', ' inkeeper', ' gardener',
+                      ' servant', ' shaman']
+possible_place = ['inn', 'old castle', 'deep dwarven mine', 'town square', 'shadowy forrest', 'wide road',
+                  'godforsaken village', 'seashore']
+actions_to_happen = ['attacked ', 'spited on ', 'brawled with ', 'whistle at ', 'argue with ', ]
+
+
+
+sleep(sleep_value)
+print(f'{he_she.capitalize()} looked around and {random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)} and '
+      f'{random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)}.')
+
+sleep(sleep_value)
+print(f'After that {he_she} {random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)} and moved {random.choice(possible_directions)}, traveling with companion of {random.choice(who_random) + random.choice(occupations_random)}.')
+
+sleep(sleep_value)
+print(f'{random.choice(possible_place).capitalize()} was opportunity for some coins, so {he_she} {random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)}, then {he_she} had to move {random.randrange(2, 1500)}'
+      f' meters {random.choice(possible_directions)}')
+
+sleep(sleep_value)
+print(f'The travel took some time, but the view of {random.choice(possible_place)} was magnificent, even with of {random.choice(who_random) + random.choice(occupations_random)} in view. ')
+
+sleep(sleep_value)
+
+print(f'Whole adventures day made {our_heroe} tired, so {he_she} found a {random.choice(possible_place)} to rest before next day.')
 
 
 
 
+#
+# user_long = int(input('How long (in rows) should be the story: '))
+# story(user_long)
 
-
-
-# nickname_base = ['Handsome', 'Bold', 'Decayed', 'Lazy', 'Oathbreaker', 'Unpleasant', 'Big', 'Necromancer', 'Blackheart']
-# nickname = random.choice(nickname_base)
-# our_heroe = str(name_out + ' the ' + nickname)
-# print(f'Your heroe is called {our_heroe}')
-# print()
-#
-
-#
-# distance = random.randrange(1, 100)
-# possible_directions = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest']
-# actions_to_happen = ['took a big breath', 'spited out', 'attacked wolverine', 'attacked pixie',
-#                      'shouted at nearest person', 'fall a sleep', 'brawled with NPC', ]
-# # attacked_things = ['pixie', 'wolverine','wherewolf','skeleton', 'zombie', 'chaos dwarf', 'nurgle spawn', 'goblin',
-# # 'human bodyguard', 'hangman', 'tax collector']
-# possible_place = ['inn', 'old castle', 'deep dwarven mine', 'town square', 'shadowy forrest', 'wide road',
-#                   'godforsaken village', 'seashore']
-#
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-#
-# print(f'1 So our story begins when {our_heroe} stepped outside the tavern "Saturday\'s Hangover".')
-# sleep(2)
-# print(f'2 {he_she.capitalize()} looked around {random.choice(actions_to_happen)} and {random.choice(actions_to_happen)}.')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-# print(f'3 After that {he_she} {action} and moved {direction} .')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-#
-# print(f'4 {place.capitalize()} was opportunity for some coins, so {he_she} {action} , then {he_she} '
-#       f'had to move {distance} {direction}')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-#
-# print(f'5 The {place} was opportunity for some coins, so {he_she} {action} , then {he_she} '
-#       f'had to move {distance} {direction}')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-#
-# print(f'6 The {place} was opportunity for some coins, so {he_she} {action} , then {he_she} '
-#       f'had to move {distance} {direction}')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-#
-# print(f'7 The {place} was opportunity for some coins, so {he_she} {action} , then {he_she} '
-#       f'had to move {distance} {direction}')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-#
-# print(f'8 The {place} was opportunity for some coins, so {he_she} {action} , then {he_she} '
-#       f'had to move {distance} {direction}')
-# sleep(2)
-# action = random.choice(actions_to_happen)
-# direction = random.choice(possible_directions)
-# place = random.choice(possible_place)
-# distance = str(distance) + ' paces'
-
-# def randomized (all):
-#     action = random.choice(actions_to_happen)
-#     direction = random.choice(possible_directions)
-#     place = random.choice(possible_place)
-#     distance = random.randrange(1, 100)
-#     distance = str(distance) + ' paces'
 
