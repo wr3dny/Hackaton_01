@@ -9,7 +9,10 @@
 
 import random
 
-name_parts = ['ab', 'ce', 'on', 'lu', 'xu', 'pi', 'ur', 'os', 'ut', 'zo', 'mi', 'wa']
+vowel = ['a', 'e', 'i', 'o', 'u']
+consonant = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'n', 'q', 's', 't', 'v', 'x', 'z', 'h', 'r', 'w', 'y']
+
+name_parts = ['bo', 'ce', 'na', 'lu', 'xu', 'pi', 'ra', 'sa', 'ut', 'zo', 'mi', 'wa']
 
 generated_name = []
 
@@ -36,21 +39,36 @@ print()
 
 movement_to_happen = ['moved 20 paces north', 'moved 30 paces south', 'shouted at nearest person', 'died']
 actions_to_happen = ['took a big breath', 'spited out', 'attacked wolverine', 'attacked pixie']
+destinations_to_meet = ['inn', 'old castle', 'dwarven mine', 'town square']
 
 actions = random.choice(actions_to_happen)
-movement = movement_to_happen
+movement = random.choice(movement_to_happen)
+destinations = random.choice(destinations_to_meet)
+
+print(name_out)
 
 if name_out[-1] == a:
-    sex = 'female'
-else:
-    sex = 'male'
-
-if sex == 'female':
     he_she = 'she'
 else:
     he_she = 'he'
 
 
-
 print(f'So our story begins when {our_heroe} stepped outside the tavern "Saturday\'s Hangover".')
-print(f'{he_she.capitalize()} looked around {movement_to_happen} and {actions_to_happen}')
+print(f'{he_she.capitalize()} looked around {movement} and {actions}.')
+
+movement_to_happen = ['moved 20 paces north', 'moved 30 paces south']
+actions_to_happen = ['took a big breath', 'spited out', 'attacked wolverine', 'attacked pixie',
+                     'shouted at nearest person', 'died']
+destinations_to_meet = ['inn', 'old castle', 'dwarven mine', 'town square']
+
+actions = random.choice(actions_to_happen)
+movement = random.choice(movement_to_happen)
+destinations = random.choice(destinations_to_meet)
+
+print(f'After that {he_she} {actions} and {movement}.')
+
+actions = random.choice(actions_to_happen)
+movement = random.choice(movement_to_happen)
+destinations = random.choice(destinations_to_meet)
+
+print(f'{destinations.capitalize()} was opportunity for some coins, so {he_she} {actions} but first {he_she} had to {movement}')
