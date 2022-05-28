@@ -2,8 +2,8 @@ import random
 from time import sleep
 sleep_value = 2
 
-user_name_lenght = int(input("Give Your heroe name lenght (please use even number): "))
-user_aligmnet = input('Are You "good" or "bad": ')
+user_name_lenght = int(input("Give Your hero name lenght (please use even number): "))
+user_alignment = input('Are You "good" or "bad": ')
 
 vowel = ['a', 'e', 'i', 'o', 'u']
 consonant = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'n', 'q', 's', 't', 'v',
@@ -49,7 +49,7 @@ def nickname_generator(alignment):
 
 
 name_out = name_generator(user_name_lenght)
-nickname = nickname_generator(user_aligmnet)
+nickname = nickname_generator(user_alignment)
 
 if name_out[-1] == 'a':
     he_she = 'she'
@@ -61,9 +61,9 @@ else:
 #     if x in range(0, how_long):
 
 
-print('Your heroe is created')
+print('Your hero is created')
 sleep(sleep_value)
 print(f'{he_she.capitalize()} is called {name_out} the {nickname}')
 sleep(sleep_value)
 
-our_heroe = name_out + ' the ' + nickname
+our_hero = name_out + ' the ' + nickname

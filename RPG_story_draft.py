@@ -11,15 +11,15 @@ import random
 from time import sleep
 sleep_value = 2
 
-user_name_lenght = int(input("Give Your heroe name lenght (please use even number): "))
-user_aligmnet = input('Are You "good" or "bad": ')
+user_name_lenght = int(input("Give Your hero name length (please use even number): "))
+user_alignment = input('Are You "good" or "bad": ')
 
 vowel = ['a', 'e', 'i', 'o', 'u']
 consonant = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'n', 'q', 's', 't', 'v',
              'x', 'z', 'h', 'r', 'w', 'y']
 name_parts = []
 i = 0
-while i <= 105:
+while i <= 200:
     vr = random.choice(vowel)
     cr = random.choice(consonant)
     syllables = cr + vr
@@ -58,60 +58,64 @@ def nickname_generator(alignment):
 
 
 name_out = name_generator(user_name_lenght)
-nickname = nickname_generator(user_aligmnet)
+nickname = nickname_generator(user_alignment)
 
 if name_out[-1] == 'a':
     he_she = 'she'
 else:
     he_she = 'he'
 
-# def story(how_long):
-#     x = 0
-#     if x in range(0, how_long):
-
-
-print('Your heroe is created')
-sleep(sleep_value)
+print('Your hero is created')
+sleep(1)
 print(f'{he_she.capitalize()} is called {name_out} the {nickname}')
 sleep(sleep_value)
 
-our_heroe = name_out + ' the ' + nickname
+our_hero = name_out + ' the ' + nickname
 
-print(f'So our story begins when {our_heroe} stepped outside the tavern "Saturday\'s Hangover".')
+def story_rows(yes_no):
+    possible_directions = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest']
+    who_random = ['pixie', 'banshee', 'werewolf', 'skeleton', 'zombie', 'dwarf', 'bestigor', 'goblin']
+    occupations_random = [' bodyguard', ' hangman', ' tax collector', ' miner', ' mime', ' innkeeper', ' gardener',
+                          ' servant', ' shaman']
+    possible_place = ['inn', 'old castle', 'deep dwarven mine', 'town square', 'shadowy forrest', 'wide road',
+                      'godforsaken village', 'seashore']
+    actions_to_happen = ['attacked ', 'spited on ', 'brawled with ', 'whistle at ', 'argue with ', ]
 
-possible_directions = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest']
-who_random = ['pixie', 'wolverine ', 'wherewolf', 'skeleton', 'zombie', 'dwarf', 'bestigor', 'goblin']
-occupations_random = [' bodyguard', ' hangman', ' tax collector', ' miner', ' mime', ' inkeeper', ' gardener',
-                      ' servant', ' shaman']
-possible_place = ['inn', 'old castle', 'deep dwarven mine', 'town square', 'shadowy forrest', 'wide road',
-                  'godforsaken village', 'seashore']
-actions_to_happen = ['attacked ', 'spited on ', 'brawled with ', 'whistle at ', 'argue with ', ]
+    line_1 = f'So our story begins when {our_hero} stepped outside the tavern "Saturday\'s Hangover".'
+    line_2 = f'{he_she.capitalize()} looked around and {random.choice(actions_to_happen)}' \
+             f'{random.choice(who_random) + random.choice(occupations_random)} and ' \
+             f'{random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)}.'
+    line_3 = f'After that {he_she} {random.choice(actions_to_happen)}' \
+             f'{random.choice(who_random) + random.choice(occupations_random)} and moved ' \
+             f'{random.choice(possible_directions)}, traveling with companion of ' \
+             f'{random.choice(who_random) + random.choice(occupations_random)}.'
+    line_4 = f'{random.choice(possible_place).capitalize()} was opportunity for some coins, so {he_she} ' \
+             f'{random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)},' \
+             f' then {he_she} had to travel for {random.randrange(1, 8)} hours {random.choice(possible_directions)}'
+    line_5 = f'The travel took its tall, but the view of {random.choice(possible_place)} was magnificent, even with ' \
+             f'a pair of {random.choice(who_random) + random.choice(occupations_random)} standing in the way. '
+    line_6 = f'Whole adventures day made {our_hero} tired, so {he_she} found a {random.choice(possible_place)} ' \
+             f'to rest before next day.'
+    line_7 = 'The End'
+    yes_no = yes_no.lower()
+    if yes_no == 'yes':
+        print(line_1)
+        sleep(2)
+        print(line_2)
+        sleep(2)
+        print(line_3)
+        sleep(2)
+        print(line_4)
+        sleep(2)
+        print(line_5)
+        sleep(2)
+        print(line_6)
+        sleep(2)
+        print(line_7)
+    elif yes_no == 'no':
+        print('So You don\'t want to know the tale')
+    else:
+        print('That is not the correct answer.')
 
-
-
-sleep(sleep_value)
-print(f'{he_she.capitalize()} looked around and {random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)} and '
-      f'{random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)}.')
-
-sleep(sleep_value)
-print(f'After that {he_she} {random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)} and moved {random.choice(possible_directions)}, traveling with companion of {random.choice(who_random) + random.choice(occupations_random)}.')
-
-sleep(sleep_value)
-print(f'{random.choice(possible_place).capitalize()} was opportunity for some coins, so {he_she} {random.choice(actions_to_happen)}{random.choice(who_random) + random.choice(occupations_random)}, then {he_she} had to move {random.randrange(2, 1500)}'
-      f' meters {random.choice(possible_directions)}')
-
-sleep(sleep_value)
-print(f'The travel took some time, but the view of {random.choice(possible_place)} was magnificent, even with of {random.choice(who_random) + random.choice(occupations_random)} in view. ')
-
-sleep(sleep_value)
-
-print(f'Whole adventures day made {our_heroe} tired, so {he_she} found a {random.choice(possible_place)} to rest before next day.')
-
-
-
-
-#
-# user_long = int(input('How long (in rows) should be the story: '))
-# story(user_long)
-
-
+user_rows = input('Do You want to hear the tale (yes/no) : ')
+story_rows(user_rows)
