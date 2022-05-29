@@ -1,15 +1,14 @@
-# Historyjka a'la RPG:
+# Generator imienia dla Wojownika RPG:
 #
 #     Konieczność użycia modułu random.
-#     Program wypisuje kolejne "przygody" bohatera.
-#     Przygody są zdefiniowanymi zdaniami, które będą losowo wypełniane odpowiednimi wyrazami,
-#     np: "(bohater) poszedł do (miejsce) aby (czasownik)." może stać się "Jouxdrien II Niemrawy
-#     poszedł do tawerny aby zasnąć."
-#     Historyjka ma mieć zadaną długość i ma być możliwie losowa.
+#     Program generuje wymawialne(!) imię o zadanej długości i dodaje do niego przydomek
+#     (opcjonalnie również tytuł i liczebnik). Np. 'Jouxdrien II Niemrawy'.
+#     Pomysł jest zainspirowany grą: http://progressquest.com/play/roster.html
+#     Imię musi zaczynać się od wielkiej litery.
+#     Program można kontynuować używając pomysłu poniżej
 
 import random
 from time import sleep
-sleep_value = 2
 
 user_name_lenght = int(input("Give Your hero name length (please use even number): "))
 user_alignment = input('Are You "good" or "evil": ')
@@ -31,7 +30,6 @@ def name_generator(name_lenght):
     generated_name = []
     if abs(name_lenght % 2 != 0):
         print('You picked and odd number')
-        name_length = int(input('Pick up Your number again: '))
     else:
         j = 0
         for j in range(0, int(name_lenght/2)):
@@ -43,6 +41,12 @@ def name_generator(name_lenght):
     name_out = name_out.capitalize()
     return name_out
 
+    name_out: str = ' '.join(generated_name)
+    name_out = name_out.replace(' ', '')
+    name_out = name_out.capitalize()
+    return name_out
+
+
 def nickname_generator(alignment):
     if alignment == 'good':
         nickname_good = ['Handsome', 'Bold', 'Big', 'Swift', 'Pure', 'Fair', 'Peacebringer']
@@ -52,11 +56,12 @@ def nickname_generator(alignment):
         nickname = random.choice(nickname_evil)
     else:
         print('You picked up wrong - only good and evil are worthy of choice')
+
     return nickname
 
 
-name_out = name_generator(user_name_lenght)
 nickname = nickname_generator(user_alignment)
+name_out = name_generator(user_name_lenght)
 
 if name_out[-1] == 'a':
     he_she = 'she'
@@ -66,9 +71,18 @@ else:
 print('Your hero is created')
 sleep(1)
 print(f'{he_she.capitalize()} is called {name_out} the {nickname}')
-sleep(sleep_value)
+sleep(2)
 
 our_hero = name_out + ' the ' + nickname
+
+# Historyjka a'la RPG:
+#
+#     Konieczność użycia modułu random.
+#     Program wypisuje kolejne "przygody" bohatera.
+#     Przygody są zdefiniowanymi zdaniami, które będą losowo wypełniane odpowiednimi wyrazami,
+#     np: "(bohater) poszedł do (miejsce) aby (czasownik)." może stać się "Jouxdrien II Niemrawy
+#     poszedł do tawerny aby zasnąć."
+#     Historyjka ma mieć zadaną długość i ma być możliwie losowa.
 
 def story_rows(yes_no):
     possible_directions = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest']
@@ -98,17 +112,17 @@ def story_rows(yes_no):
     yes_no = yes_no.lower()
     if yes_no == 'yes':
         print(line_1)
-        sleep(2)
+        sleep(1)
         print(line_2)
-        sleep(2)
+        sleep(3)
         print(line_3)
-        sleep(2)
+        sleep(3)
         print(line_4)
-        sleep(2)
+        sleep(3)
         print(line_5)
-        sleep(2)
+        sleep(3)
         print(line_6)
-        sleep(2)
+        sleep(3)
         print(line_7)
     elif yes_no == 'no':
         print('So You don\'t want to know the tale')
@@ -118,3 +132,22 @@ def story_rows(yes_no):
 user_rows = input('Do You want to hear the tale (yes/no) : ')
 story_rows(user_rows)
 
+# def main():
+#     user_name_lenght = int(input("Give Your hero name length (please use even number): "))
+#     user_alignment = input('Are You "good" or "evil": ')
+#     name_out = name_generator(user_name_lenght)
+#     nickname = nickname_generator(user_alignment)
+#     if name_out[-1] == 'a':
+#         he_she = 'she'
+#     else:
+#         he_she = 'he'
+#     our_hero = name_out + ' the ' + nickname
+#     print('Your hero is created')
+#     sleep(1)
+#     print(f'{he_she.capitalize()} is called {name_out} the {nickname}')
+#     our_hero = name_out + ' the ' + nickname
+#     sleep(2)
+#     user_rows = input('Do You want to hear the tale (yes/no) : ')
+#     story_rows(user_rows)
+#
+# main()
